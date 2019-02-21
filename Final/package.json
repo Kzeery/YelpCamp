@@ -5,13 +5,14 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" :"node app.js"
+    "start": "node app.js"
   },
   "author": "Yousif Kzeer",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",
+    "connect-redis": "^3.4.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
