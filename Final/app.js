@@ -5,7 +5,8 @@ const campgroundsRoutes = require("./routes/campgrounds"),
       indexRoutes       = require("./routes/index"),
       User              = require("./models/user"),
       flash             = require("connect-flash"),
-      RedisStore        = require("connect-redis"),
+      session           = require("express-session"),
+      RedisStore        = require("connect-redis")(session),
       bodyParser        = require("body-parser"),
       mongoose          = require("mongoose"),
       passport          = require("passport"),
@@ -23,12 +24,11 @@ app.use(methodOverride("_method"));
 app.use(flash());
 
 // PASSPORT CONFIG
-app.use(require("express-session")({
+app.use(session({
     secret: "YelpCampSecret13245",
     store: new RedisStore(),
     resave: false,
     saveUninitialized: true,
-
 }));
 app.use(passport.initialize());
 app.use(passport.session());
