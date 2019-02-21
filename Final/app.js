@@ -13,7 +13,8 @@ const campgroundsRoutes = require("./routes/campgrounds"),
       
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
-mongoose.connect("mongodb://127.0.0.1/yelp_camp");
+// mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect("mongodb+srv://kzeery:yelpcamp123@yelpcampcluster-8goad.mongodb.net/test?retryWrites=true");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -22,7 +23,7 @@ app.use(flash());
 
 // PASSPORT CONFIG
 app.use(require("express-session")({
-    secret: "I love cynthia so much",
+    secret: "YelpCampSecret13245",
     resave: false,
     saveUninitialized: false
 }));
@@ -43,5 +44,6 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 app.use("/campgrounds", campgroundsRoutes);
 
 
-app.listen(process.env.PORT, process.env.HOST, function() {
+app.listen(3000, '127.0.0.1', function() {
+    console.log("server started");
 });
