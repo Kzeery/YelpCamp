@@ -1,10 +1,23 @@
 <% include partials/header %>
-<h1>Login!</h1>
+<div class="container">
+    <div class="row">
+        <h1 class="center-text">Login</h1>
+        <div class="margin-center">
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="username" placeholder="username" id="">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="password" id="">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success btn-lg btn-block">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-<form action="/login" method="POST">
-    <input type="text" name="username" placeholder="username" id="">
-    <input type="password" name="password" placeholder="password" id="">
-    <button class="btn btn-success">Submit</button>
-</form>
+
 
 <% include partials/footer %>

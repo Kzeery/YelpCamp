@@ -11,10 +11,10 @@ const campgroundsRoutes = require("./routes/campgrounds"),
       passport          = require("passport"),
       express           = require("express"),
       app               = express();
-      
+var   url               = process.env.DATABASEURL || "mongodb://localhost/yelp_camp"
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
-mongoose.connect(process.env.DATABASEURL);
+mongoose.connect(url);
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
