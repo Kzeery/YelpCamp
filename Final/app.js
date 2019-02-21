@@ -6,7 +6,6 @@ const campgroundsRoutes = require("./routes/campgrounds"),
       User              = require("./models/user"),
       flash             = require("connect-flash"),
       session           = require("express-session"),
-      RedisStore        = require("connect-redis")(session),
       bodyParser        = require("body-parser"),
       mongoose          = require("mongoose"),
       passport          = require("passport"),
@@ -27,7 +26,6 @@ app.use(flash());
 // PASSPORT CONFIG
 app.use(session({
     secret: "YelpCampSecret13245",
-    store: new RedisStore(),
     resave: false,
     saveUninitialized: true,
 }));
@@ -37,9 +35,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 app.use(function(req, res, next) {
-    if(!req.session) {
-        return next(new Error('ERROR!'));
-    }
     res.locals.currentUser = req.user;
     res.locals.error = req.flash("error");
     res.locals.success = req.flash("success");
