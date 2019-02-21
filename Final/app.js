@@ -11,6 +11,7 @@ const campgroundsRoutes = require("./routes/campgrounds"),
       mongoose          = require("mongoose"),
       passport          = require("passport"),
       express           = require("express"),
+      port              = process.env.PORT || 8080,
       app               = express();
       
 mongoose.set('useNewUrlParser', true);
@@ -50,6 +51,6 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 app.use("/campgrounds", campgroundsRoutes);
 
 
-app.listen(process.env.PORT, process.env.HOST, function() {
+app.listen(port, function() {
     console.log("server started");
 });
