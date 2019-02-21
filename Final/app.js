@@ -43,6 +43,6 @@ app.use("/", indexRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 app.use("/campgrounds", campgroundsRoutes);
 
-app.listen(process.env.NEWPORT, process.env.IP, function() {
+app.listen(process.env.PORT, process.env.IP, function() {
     console.log("server started");
 });
