@@ -10,13 +10,12 @@ const campgroundsRoutes = require("./routes/campgrounds"),
       mongoose          = require("mongoose"),
       passport          = require("passport"),
       express           = require("express"),
-      port              = process.env.PORT || 8080,
       app               = express();
       
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
-// mongoose.connect("mongodb://localhost/yelp_camp");
-mongoose.connect("mongodb+srv://kzeery:yelpcamp123@yelpcampcluster-8goad.mongodb.net/test?retryWrites=true");
+mongoose.connect(process.env.DATABASEURL);
+// mongoose.connect("mongodb+srv://kzeery:yelpcamp123@yelpcampcluster-8goad.mongodb.net/test?retryWrites=true");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -45,7 +44,6 @@ app.use("/", indexRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 app.use("/campgrounds", campgroundsRoutes);
 
-
-app.listen(port, function() {
+app.listen(process.env.PORT, process.env.IP, function() {
     console.log("server started");
 });
